@@ -40,11 +40,11 @@
     "requirements.txt": "d667767b6fb6db711085f62a69a97347286d4f3570d7ed8896ea96551d3d7728",
     "run_demo.bat": "b29ea05eb2ff178377ce82ac7cdf0f2caae86685e9746b03799e5819643465dc",
     "run_demo.py": "33e2469c24ee7197884da9f05709f5f7fd98cc71af37aa222baf3cd34f40f848",
-    "tests/test_quickstart.py": "4f8165f7f578ec90e79dd8d4308d002a3a56227589a5cdc056d60d2d00cda30a"
+    "tests/test_quickstart.py": "fd12c847f7341775bcc9ee7c125a9942c050854ee596ffb3bd102716ef069d9b"
   },
   "ownership_attestation_status": "owner_attested",
-  "publication_links_status": "blocked_http_checks",
-  "publication_status": "BLOCKED",
+  "publication_links_status": "ready",
+  "publication_status": "READY",
   "redactions": {},
   "release_kind": "public-source-repository",
   "release_version": "v1.0.0",

@@ -4,6 +4,7 @@ import ast
 import copy
 import json
 import re
+import shutil
 import subprocess
 import sys
 import tempfile
@@ -218,24 +219,61 @@ class QuickstartTests(unittest.TestCase):
             self.skipTest(
                 "The public source repository omits internal release-governance files."
             )
-        result = subprocess.run(
-            [sys.executable, "-B", "CHECK_PUBLICATION.py"],
-            cwd=ROOT,
-            text=True,
-            capture_output=True,
+        gate_inputs = (
+            "CHECK_PUBLICATION.py",
+            "LICENSE",
+            "NOTICE",
+            "LICENSE_SCOPE.md",
+            "SOURCES.md",
+            "THIRD_PARTY_NOTICES.md",
+            "PUBLICATION_OWNERSHIP.json",
+            "OWNERSHIP_ATTESTATION.md",
+            "PUBLICATION_LINKS.json",
+            "THIRD_PARTY_RIGHTS.json",
+            "04_FAILURE/PUBLIC_LTSPICE_FAILURE.json",
+            "04_FAILURE/PUBLIC_FAILURE_NOTE.md",
+            "01_ARTICLE/FIELD_NOTE_FINAL.md",
+            "README.md",
+            "START_HERE.md",
+            "AI_BUILD_LOG.md",
         )
-        self.assertEqual(result.returncode, 2, result.stdout + result.stderr)
-        report = json.loads(result.stdout)
-        self.assertEqual(report["status"], "BLOCKED")
-        ownership = json.loads(
-            (ROOT / "PUBLICATION_OWNERSHIP.json").read_text(encoding="utf-8")
-        )
-        self.assertEqual(ownership["status"], "owner_attested")
-        self.assertNotIn("OWNERSHIP_ATTESTATION_REQUIRED", report["blockers"])
-        self.assertIn(
-            "PUBLIC_URL_NOT_HTTP_200:quickstart_download_url",
-            report["blockers"],
-        )
+        with tempfile.TemporaryDirectory(prefix="llc-publication-gate-") as directory:
+            gate_root = Path(directory)
+            for relative in gate_inputs:
+                source = ROOT / relative
+                target = gate_root / relative
+                target.parent.mkdir(parents=True, exist_ok=True)
+                shutil.copy2(source, target)
+
+            links_path = gate_root / "PUBLICATION_LINKS.json"
+            links = json.loads(links_path.read_text(encoding="utf-8"))
+            links["status"] = "blocked_http_checks"
+            links["http_checks"]["quickstart_download_url"] = 404
+            links_path.write_text(
+                json.dumps(links, indent=2, ensure_ascii=False) + "\n",
+                encoding="utf-8",
+            )
+
+            result = subprocess.run(
+                [sys.executable, "-B", "CHECK_PUBLICATION.py"],
+                cwd=gate_root,
+                text=True,
+                capture_output=True,
+            )
+            self.assertEqual(result.returncode, 2, result.stdout + result.stderr)
+            report = json.loads(result.stdout)
+            self.assertEqual(report["status"], "BLOCKED")
+            ownership = json.loads(
+                (gate_root / "PUBLICATION_OWNERSHIP.json").read_text(
+                    encoding="utf-8"
+                )
+            )
+            self.assertEqual(ownership["status"], "owner_attested")
+            self.assertNotIn("OWNERSHIP_ATTESTATION_REQUIRED", report["blockers"])
+            self.assertIn(
+                "PUBLIC_URL_NOT_HTTP_200:quickstart_download_url",
+                report["blockers"],
+            )
 
     def test_public_docs_do_not_reference_private_verifier(self):
         manifest_path = ROOT / "RELEASE_MANIFEST.json"
