@@ -1,0 +1,53 @@
+{
+  "schema_version": "llc-third-party-rights-v2",
+  "status": "owner_review_complete",
+  "decision_date": "2026-08-21",
+  "policy": "Conservative link-only publication; internal authority evidence remains unchanged.",
+  "items": [
+    {
+      "pattern": "*LLC_Design_by_using_Scaling_Laws_rev12_1.pdf",
+      "decision": "exclude",
+      "evidence": "No redistribution license established; cite the official Ridley Engineering page instead."
+    },
+    {
+      "pattern": "*2024-aip-how-to-design-a-half-bridge-llc-resonant-converter*.pdf",
+      "decision": "exclude",
+      "evidence": "MPS proprietary publication; cite the public EEPower article instead."
+    },
+    {
+      "pattern": "*LLC CM 250 W ebike -CV_CCv2.asc",
+      "decision": "exclude",
+      "evidence": "Schematic ownership and redistribution rights are not cleared."
+    },
+    {
+      "pattern": "04_FAILURE/closed_loop_timeout_v1/*",
+      "decision": "exclude",
+      "evidence": "Exclude schematic-derived netlist, raw output, parameter files, logs and detailed records; publish only the separately sanitized factual record after ownership attestation."
+    },
+    {
+      "pattern": "04_FAILURE/FAILURE.md",
+      "decision": "exclude",
+      "evidence": "Replaced in the public archive by PUBLIC_FAILURE_NOTE.md."
+    },
+    {
+      "pattern": "*uso_simulacion_LLC_v2.md",
+      "decision": "exclude",
+      "evidence": "Detailed instructions describe the uncleared LTspice source schematic."
+    },
+    {
+      "pattern": "06_REPRODUCIBILITY/configs/llc_campaign_200_v1.json",
+      "decision": "exclude",
+      "evidence": "Historical configuration identifies the uncleared LTspice source and local adapter."
+    },
+    {
+      "pattern": "06_REPRODUCIBILITY/tools/llc_campaign.py",
+      "decision": "exclude",
+      "evidence": "Historical adapter automates the uncleared LTspice source; the independent standard-library core remains public."
+    },
+    {
+      "pattern": "06_REPRODUCIBILITY/tests/test_llc_campaign.py",
+      "decision": "exclude",
+      "evidence": "Tests exercise the excluded historical LTspice adapter."
+    }
+  ]
+}

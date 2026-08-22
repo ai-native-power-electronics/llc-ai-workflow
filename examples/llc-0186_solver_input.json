@@ -1,0 +1,35 @@
+{
+  "candidate_id": "llc-0186",
+  "design_variables": {
+    "cr_f": 4.059206675360593e-08,
+    "fr_hz": 72998.73759191348,
+    "lm_h": 0.00042295113716719587,
+    "ln": 3.6117842275596215,
+    "load_ohm": 5.6347826086956525,
+    "lr_h": 0.00011710310210113846,
+    "q": 0.6575830118978545,
+    "rac_primary_ohm": 81.67949290489697,
+    "turns_ratio_np_ns": 4.2288551815845326,
+    "turns_ratio_ns_np": 0.23647061842049283,
+    "z0_ohm": 53.71104695469159
+  },
+  "input_spec": {
+    "operating_condition": "fixed_input_full_load",
+    "pout_w": 230.0,
+    "topology": "half_bridge_llc_center_tapped",
+    "vin_v": 400.0,
+    "vout_v": 36.0
+  },
+  "solver": {
+    "absolute_current_limit_a": 1000000.0,
+    "absolute_voltage_limit_v": 100000000.0,
+    "convergence_check_cycles": 10,
+    "convergence_relative_tolerance": 0.0001,
+    "maximum_cycles": 400,
+    "measurement_cycles": 8,
+    "minimum_cycles": 80,
+    "model_version": "switched-linear-equivalent-v1",
+    "series_resistance_ohm": 0.12,
+    "steps_per_cycle": 160
+  }
+}

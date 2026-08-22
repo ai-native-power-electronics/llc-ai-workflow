@@ -1,0 +1,2 @@
+# The core demo has no third-party Python dependencies.
+# Jupyter is optional and only needed to open the browser notebook.

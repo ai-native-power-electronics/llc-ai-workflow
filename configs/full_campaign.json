@@ -1,0 +1,62 @@
+{
+  "schema_version": "llc-demo-config-v1",
+  "run_name": "llc-full-rebuild-v1",
+  "seed": 20260820,
+  "candidate_count": 200,
+  "input_spec": {
+    "vin_v": 400.0,
+    "vout_v": 36.0,
+    "pout_w": 230.0,
+    "topology": "half_bridge_llc_center_tapped",
+    "operating_condition": "fixed_input_full_load",
+    "units": {"vin_v": "V", "vout_v": "V", "pout_w": "W"}
+  },
+  "design_space": {
+    "ln_min": 3.0,
+    "ln_max": 10.0,
+    "q_min": 0.2,
+    "q_max": 0.8,
+    "fr_hz_min": 70000.0,
+    "fr_hz_max": 120000.0,
+    "turns_ratio_ns_np_min": 0.18,
+    "turns_ratio_ns_np_max": 0.24
+  },
+  "fha_screen": {
+    "model_version": "center-tapped-fha-v1",
+    "fsw_hz_min": 50000.0,
+    "fsw_hz_max": 180000.0,
+    "frequency_grid_points": 2601,
+    "gain_relative_error_max": 0.01,
+    "minimum_inductive_phase_deg": 2.0
+  },
+  "equivalent_solver": {
+    "model_version": "switched-linear-equivalent-v1",
+    "steps_per_cycle": 160,
+    "minimum_cycles": 80,
+    "maximum_cycles": 400,
+    "convergence_check_cycles": 10,
+    "convergence_relative_tolerance": 0.0001,
+    "measurement_cycles": 8,
+    "series_resistance_ohm": 0.12,
+    "absolute_current_limit_a": 1000000.0,
+    "absolute_voltage_limit_v": 100000000.0,
+    "timeout_seconds": 30.0
+  },
+  "decision_thresholds": {
+    "vout_relative_error_max": 0.05,
+    "pout_relative_error_max": 0.15,
+    "power_ratio_min_percent": 80.0,
+    "power_ratio_max_percent": 100.5,
+    "fsw_hz_min": 40000.0,
+    "fsw_hz_max": 250000.0,
+    "require_low_side_commutation_proxy": true,
+    "require_high_side_commutation_proxy": true
+  },
+  "ml_export": {
+    "split_seed": 20260820,
+    "train_fraction": 0.7,
+    "validation_fraction": 0.15,
+    "test_fraction": 0.15
+  },
+  "demo": {"include_forced_failure_case": true}
+}

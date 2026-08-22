@@ -1,0 +1,153 @@
+{
+  "candidate_id": "llc-0186",
+  "decision": {
+    "reason_codes": [
+      "SIMULATION_AND_ELECTRICAL_THRESHOLDS_PASS"
+    ],
+    "requires_engineer_review": true,
+    "reviewed_by": null,
+    "score": 0.012962546094223475,
+    "status": "pass"
+  },
+  "design_variables": {
+    "cr_f": 4.059206675360593e-08,
+    "fr_hz": 72998.73759191348,
+    "lm_h": 0.00042295113716719587,
+    "ln": 3.6117842275596215,
+    "load_ohm": 5.6347826086956525,
+    "lr_h": 0.00011710310210113846,
+    "q": 0.6575830118978545,
+    "rac_primary_ohm": 81.67949290489697,
+    "turns_ratio_np_ns": 4.2288551815845326,
+    "turns_ratio_ns_np": 0.23647061842049283,
+    "z0_ohm": 53.71104695469159
+  },
+  "fha_screen": {
+    "method": "FHA",
+    "metrics": {
+      "best_frequency_hz": 114250.0,
+      "best_gain": 0.7612906022517223,
+      "best_input_phase_deg": 42.67986794995506,
+      "gain_relative_error": 0.00012699728985663398,
+      "maximum_gain_on_grid": 1.1693588558384849,
+      "maximum_input_phase_deg": 57.422977626045,
+      "minimum_gain_on_grid": 0.5462260003598163,
+      "required_gain": 0.761193932685216
+    },
+    "model_version": "center-tapped-fha-v1",
+    "operating_points": [
+      {
+        "pout_w": 230.0,
+        "vin_v": 400.0,
+        "vout_v": 36.0
+      }
+    ],
+    "reason_codes": [
+      "FHA_GAIN_AND_INDUCTIVE_PHASE_PASS"
+    ],
+    "status": "pass",
+    "thresholds": {
+      "fsw_hz_max": 180000.0,
+      "fsw_hz_min": 50000.0,
+      "gain_relative_error_max": 0.01,
+      "minimum_inductive_phase_deg": 2.0
+    }
+  },
+  "input_spec": {
+    "spec_hash": "8eda0406493aa89ff6f57b0b35bee8befe873785d1d94819dc97ef7617b532b0",
+    "units": {
+      "pout_w": "W",
+      "vin_v": "V",
+      "vout_v": "V"
+    },
+    "values": {
+      "operating_condition": "fixed_input_full_load",
+      "pout_w": 230.0,
+      "topology": "half_bridge_llc_center_tapped",
+      "vin_v": 400.0,
+      "vout_v": 36.0
+    }
+  },
+  "provenance": {
+    "campaign_id": "llc-200-v1",
+    "candidate_set_sha256": "5568fd7d6f59211245e1ac9386fd8e6cf1d1985cfaa9d840aaff11a3e4a5ae34",
+    "created_at_utc": "2026-08-20T20:43:04.640857Z",
+    "params_path": "artifacts\\llc_200_v1\\runs\\llc-0186\\params.inc",
+    "params_sha256": "7a2995b1eb56deaa81e2b45ef6d090d52c0a8be95153f7a84a60c99d9b5885bd",
+    "solver_input_path": "artifacts\\llc_200_v1\\runs\\llc-0186\\solver_input.json",
+    "solver_input_sha256": "1b13c60cb8facefb8f06b44ae8a905bbf4ad2a80a6cd50fe0d08859cc88db168"
+  },
+  "run_id": "llc-200-v1",
+  "schema_version": "llc-candidate-evidence-v1",
+  "simulation": {
+    "command": [
+      "internal",
+      "switched-linear-equivalent-v1"
+    ],
+    "convergence": {
+      "cycles_completed": 90,
+      "reason_codes": [],
+      "status": "pass",
+      "time_step_seconds": 5.470459518599562e-08
+    },
+    "elapsed_seconds": 0.05481949995737523,
+    "log_path": "artifacts\\llc_200_v1\\runs\\llc-0186\\equivalent.log",
+    "log_sha256": "723671220722b4dcbc32e22f86359d1f34681faa25bdb0a819723763e587278a",
+    "model_hash": "804f46d3409cf9dc3345fa45576f1bfff6778376fa74d41c60368564eef34f1f",
+    "operating_points": [
+      {
+        "operating_condition": "fixed_input_full_load",
+        "pout_w": 230.0,
+        "topology": "half_bridge_llc_center_tapped",
+        "vin_v": 400.0,
+        "vout_v": 36.0
+      }
+    ],
+    "raw_retained": false,
+    "raw_sha256_before_cleanup": null,
+    "raw_size_bytes": null,
+    "reason_codes": [
+      "SIM_EQUIVALENT_CONVERGED"
+    ],
+    "solver": "Python switched linear equivalent",
+    "solver_version": "switched-linear-equivalent-v1",
+    "status": "pass",
+    "telemetry": {
+      "measurement_window": {
+        "cycles": 8,
+        "samples": 1280
+      },
+      "metrics": {
+        "efficiency": 95.3188148233233,
+        "fsw": 114250.0,
+        "ilm_peak": 0.6688395456839689,
+        "ilr_peak": 2.347219295665906,
+        "ilr_rms": 1.7548791547899527,
+        "pin_avg": 240.9827589539272,
+        "pout_avg": 229.7019097634294,
+        "tank_fundamental_peak_v": 193.71079220716288,
+        "vcr_peak": 86.26754630842427,
+        "vcr_rms": 59.65344654310144,
+        "vout_real": 35.97666363518371,
+        "zvs_hs_flag": 1.0,
+        "zvs_ls_flag": 1.0
+      },
+      "missing_measurements": [],
+      "schema_version": "equivalent-time-domain-measures-v1"
+    },
+    "waveform_path": null
+  },
+  "units": {
+    "cr_f": "F",
+    "fr_hz": "Hz",
+    "lm_h": "H",
+    "ln": "1",
+    "load_ohm": "ohm",
+    "lr_h": "H",
+    "q": "1",
+    "rac_primary_ohm": "ohm",
+    "turns_ratio_np_ns": "1",
+    "turns_ratio_ns_np": "1",
+    "z0_ohm": "ohm"
+  }
+}

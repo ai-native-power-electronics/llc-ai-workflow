@@ -1,0 +1,27 @@
+name: public reproducibility
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  quickstart:
+    strategy:
+      matrix:
+        os: [ubuntu-latest, windows-latest]
+        python: ["3.11", "3.13"]
+    runs-on: ${{ matrix.os }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python }}
+      - name: Core and optional-adapter status
+        run: python -B -m llc_tool doctor
+      - name: Standard-library Quickstart tests
+        run: python -B -m unittest discover -s tests -p "test_*.py" -v
+      - name: Rebuild quick demo from inputs
+        run: python -B run_demo.py --output "${{ runner.temp }}/llc-demo"
+      - name: Replay the published candidate with tolerances
+        run: python -B -m llc_tool replay --output "${{ runner.temp }}/llc-replay"

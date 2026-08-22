@@ -1,0 +1,12 @@
+{
+  "schema_version": "llc-public-method-failure-v1",
+  "method": "LTspice secondary preflight",
+  "execution_status": "failed",
+  "gate_result": "not_applicable",
+  "engineering_approval": "pending",
+  "reason_code": "SOLVER_TIMEOUT",
+  "timeout_s": 180,
+  "required_measurements_complete": false,
+  "model_redistributed": false,
+  "publication_basis": "Included under the completed owner attestation. The underlying schematic, netlist, raw output and models are not redistributed."
+}

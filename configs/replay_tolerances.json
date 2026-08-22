@@ -1,0 +1,19 @@
+{
+  "schema_version": "llc-replay-tolerances-v1",
+  "absolute_tolerances": {
+    "vout_real": 0.000001,
+    "pout_avg": 0.00001,
+    "pin_avg": 0.00001,
+    "efficiency": 0.00001,
+    "fsw": 0.000001,
+    "ilr_rms": 0.000001,
+    "ilr_peak": 0.000001,
+    "ilm_peak": 0.000001,
+    "vcr_rms": 0.00001,
+    "vcr_peak": 0.00001,
+    "tank_fundamental_peak_v": 0.00001,
+    "zvs_ls_flag": 0.0,
+    "zvs_hs_flag": 0.0
+  },
+  "decision_status_must_match": true
+}
